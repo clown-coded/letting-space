@@ -1,0 +1,171 @@
+import { useEffect, useState } from 'react'
+
+import { Link, useLocation, matchPath, useParams  } from 'react-router-dom'
+import { List, ChevronDown } from 'react-bootstrap-icons'
+import MobileNav from "./MobileNav"
+import ArchiveNav from "./ArchiveNav"
+import BlogNav from "./BlogNav"
+import BookNav from "./BookNav"
+import AboutNav from "./AboutNav"
+import ProjectNav from "./ProjectNav"
+
+
+const Nav = () => {
+   
+    const [menuIsOpen, openMenu] = useState(false);
+    const [mobileMenuIsOpen, openMobileMenu] = useState(false);
+    const [currentPage, setCurrentPage] = useState('home')
+    const [homeOpen, setHomeOpen] = useState(true)
+    const [blogOpen, setBlogOpen] = useState(false)
+    const [aboutOpen, setAboutOpen] = useState(false)
+    const [bookOpen, setBookOpen] = useState(false)
+    const [archiveOpen, setArchiveOpen] = useState(false)
+    const [projectOpen, setProjectOpen] = useState(false)
+
+
+    const url = useLocation()
+    const location = url.pathname
+    
+    
+    // const params = useParams();
+   
+  
+    
+
+
+    const toggleMenu = () => {
+        openMenu(!menuIsOpen)  
+    }
+
+
+    const toggleMobileMenu = () => {
+      
+        openMobileMenu(!mobileMenuIsOpen)
+        document.body.classList.toggle('no-scroll');
+        
+    }
+
+
+    useEffect(() => {
+
+        console.log(location);
+        if (location == '/'){
+            setHomeOpen(true);
+            setArchiveOpen(false);
+            setBlogOpen(false);
+            setAboutOpen(false);
+            setBookOpen(false);
+            setProjectOpen(false)
+        }
+        if (location == '/archive') {
+            setHomeOpen(false);
+            setArchiveOpen(true);
+            setBlogOpen(false);
+            setAboutOpen(false);
+            setBookOpen(false);
+            setProjectOpen(false)
+        }
+        if (location == '/book') {
+            setHomeOpen(false);
+            setArchiveOpen(false);
+            setBlogOpen(false);
+            setAboutOpen(false);
+            setBookOpen(true);
+            setProjectOpen(false)
+        }
+        if (location == '/about'){
+            setHomeOpen(false);
+        setArchiveOpen(false);
+        setBlogOpen(false);
+        setAboutOpen(true);
+        setBookOpen(false);
+        setProjectOpen(false)
+        }
+        if (location == '/blog') {
+            setHomeOpen(false);
+        setArchiveOpen(false);
+        setBlogOpen(true);
+        setAboutOpen(false);
+        setBookOpen(false);
+        setProjectOpen(false)
+        }
+        if (matchPath('/project/:id', location)) {
+            setHomeOpen(false);
+        setArchiveOpen(false);
+        setBlogOpen(false);
+        setAboutOpen(false);
+        setBookOpen(false);
+        setProjectOpen(true)
+        console.log('this is a project page');
+        
+        }
+        if (matchPath('/essays/:id', location)) {
+            console.log('in essay page')
+        }
+        
+    
+    })
+
+
+  return (
+      <>
+
+      {/* DESKTOP NAV */}
+          <div className='nav'>
+              <div className='sidenav' id='sidenav'>
+                  <div className='logo-container'>
+                      <Link to='/'>
+                          <img className='logo' src="./src/assets/letting-space-logo.png" alt="Letting Space Logo" onClick={() => { setCurrentPage('home') }} /> </Link>
+                      
+                      <ChevronDown onClick={toggleMenu}
+                            id= 'open-menu' className= {menuIsOpen ? 'rotate' : 'unrotate' } 
+                          />
+                  </div>
+
+                  {menuIsOpen && ( <div className='nav-links-container'> 
+                  <ul className='nav-menu-links'>
+           
+                  <li className='nav-link' onClick={() => { setCurrentPage('about') }}>
+                      <Link to="/about" >About</Link> </li>
+                  <li className='nav-link' onClick={()=>{setCurrentPage('book')}}> <Link to="/book"  >Book</Link> </li>
+              <li className='nav-link' onClick={()=>{setCurrentPage('archive')}}> <Link to="/archive"  >Archive</Link> </li>
+              <li className='nav-link' onClick={()=>{setCurrentPage('blog')}} > <Link to="/blog" >Blog</Link> </li>
+          </ul> 
+        </div>
+                 
+          )}
+
+          {blogOpen && <BlogNav/>}
+          {archiveOpen && <ArchiveNav/>}
+          {bookOpen && <BookNav/>}
+          {aboutOpen && <AboutNav/>}
+          {projectOpen && <ProjectNav/>}
+          
+    
+              </div>
+
+              {/* MOBILE NAV */}
+
+              <div className='mobileNav'>
+                   <div className='hamburger' >
+                      <List onClick={toggleMobileMenu}/>
+                    
+                  </div>
+                  
+                  <img className='logo-mobile' src="./src/assets/letting-space-logo.png" alt="" />
+                 
+              </div>
+
+              
+              
+          </div>
+
+          {mobileMenuIsOpen && <MobileNav closeMethod={toggleMobileMenu} />}
+
+
+          
+      </>
+  )
+}
+
+export default Nav
