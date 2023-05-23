@@ -27,7 +27,7 @@ body.no-scroll{
      overflow: hidden;
 }
 
-p{
+p, h1, h2, h3, h4, h5{
     font-family: "neue-haas-grotesk-display", sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -37,7 +37,7 @@ p{
     width: 27vw;
     height: 100vh;
     display: none;
-    margin-left: 30px;
+    margin-left: 10px;
     margin-top: 30px;
 }
 .mobileNav{
@@ -47,7 +47,7 @@ p{
     
 }
 .mobile-menu{
-    z-index: 10;
+    z-index: 100;
     background-color: #FAFFEA;
     position: fixed;
     height: 100vh;
@@ -74,36 +74,58 @@ p{
     
 }
 .close-mobile-nav{
-    z-index: 2;
+  z-index: 101;
   position: absolute;
-  margin: 10px;
+  margin: 20px;
   
   font-size: 40px;
   color: black;
 }
 .hamburger{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 35px;
-    position: fixed;
-    margin: 10px;
+    
+    
+    padding: 20px 80px 0px 20px;
+    z-index:20;
+    width: 100vw;
+    background-color: #FAFFEA;
+
+}
+
+.hamburger > p {
+    font-weight: 700;
+    font-size: 30px;
+    z-index: 102;
+    /* text-decoration: underline; */
+    /* font-style: italic; */
 }
 
 .logo-mobile{
+    position: absolute;
     width: 100vw;
     margin-top: 8px;
+    margin-bottom: 10px;
     top: 10px;
+    z-index: 20;
+    
 }
 .mobile-menu-links{
-    top: 120px;
-    position: relative;
-    list-style: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 30px;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 45px;
     font-family: "neue-haas-grotesk-display", sans-serif;
-font-weight: 700;
-font-style: normal;
-color: black;
-text-align: right;
-right: 30px;
+    font-weight: 700;
+    font-style: normal;
+    color: black;
+    text-align: right;
+    right: 15px;
+    list-style: none;
 }
 
 .mobile-link, .nav-link{
@@ -112,6 +134,8 @@ right: 30px;
    user-select: none;
 }
 
+
+
 .nav-link:hover{
     border-bottom: 1px solid black;
     
@@ -119,18 +143,18 @@ right: 30px;
 
 
 .nav-links-container{
-   z-index: 4;
+    z-index: 4;
     position: fixed;
     rotate: -12deg;
     padding-top: 10px ;
     top: 95px;
-    left: 80px;
+    left: 50px;
     width: fit-content;
     animation: blurIn 0.5s ease;
   
 }
 .nav-menu-links{
-      display: flex;
+    display: flex;
     flex-direction: row;
     position: relative;
     list-style: none;
@@ -142,17 +166,19 @@ font-style: normal;
 color: black;
 text-align: right;
 right: 30px;
+
 }
 
 .a-filter{
     width: fit-content;
-    font-size: 18px;
+    /* font-size: 20px; */
      font-family: "neue-haas-grotesk-display", sans-serif;
 font-weight: 600;
 font-style: normal;
-padding-left: 10px;
-padding-right: 10px;
-padding-top: 3px;
+
+padding-right: 20px;
+padding-bottom: 10px;
+
 
 }
 
@@ -180,17 +206,37 @@ padding-top: 3px;
 
 .mobile-archive-nav{
    
-    position: fixed;
-    top: 18vh;
-    height: 14vh;
-    width: 70vw;
+    position: sticky;
+    top: 0vh;
+    height: 110px;
+    width: 100vw;
     left:30vw;
+    /* margin-top: 80px; */
+    z-index: 10;
+    background-color: #FAFFEA;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: linear-gradient(180deg, rgba(250,255,234,1) 80%, rgba(250,255,234,0) 100%);
 }
 .mobile-filters{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: right;
+}
+
+.project-post > p {
+    margin-top: 30px;
+    font-size: 1.4rem;
+}
+.project_post > .project-info{
+    text-align: right;
+}
+.project-hero-individual{
+    
+    justify-content: center;
+    object-fit: cover;
+    object-position: left top;
 }
 
 .project-hero {
@@ -201,7 +247,7 @@ padding-top: 3px;
 }
 .project-title{
     text-align: right;
-    font-size: 70px;
+    
     font-family: "neue-haas-grotesk-display", sans-serif;
 font-weight: 500;
 font-style: normal;
@@ -209,29 +255,27 @@ font-style: normal;
 .project-details{
     text-align: right;
     font-size: 25px;
-    margin: 5px 20px 5px 0px;
+   
 }
 
-.project-text-container{
-    display: flex;
-    flex-direction: row;
-}
+
 
 
 .project-text{
     margin-top: 20px;
     padding-right: 20px;
+    padding-left: 20px;
 }
 
 .project-text > p {
     margin-bottom: 20px;
-    margin-left: 20px;
-    font-size: 20px;
+    
+    font-size: 1.5rem;
    
 }
 .project-footnotes{
     align-content: center;
-    font-size: 12px;
+    font-size: .7rem;
     color: #FF229C;
     width: fit-content;
     padding: 20px;
@@ -251,7 +295,7 @@ sup{
     align-items: center;
     justify-content: right;
     padding-right: 20px;
-    font-size: 30px;
+    font-size: 40px;
     font-family: "neue-haas-grotesk-display", sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -259,20 +303,25 @@ sup{
 }
 .project-link > svg {
     font-size: 40px;
+    padding-right: 10px;
    
 }
 
 .project-header{
     display: flex;
+    /* height: 400px; */
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     position: sticky;
-    top: -31px;
-    background-color: #FAFFEA;
+    
+    /* background-color: #FAFFEA; */
     padding-top: 20px;
-    padding-bottom: 30px;
+    
+    background: rgb(250,255,234);
+
 }
+
 .project-links{
     
     display: flex;
@@ -281,6 +330,7 @@ sup{
     justify-content: start;
     padding-left: 20px;
     padding-right: 20px;
+    padding: 20px;
     
     /* margin: 5px 20px 5px 0px; */
 }
@@ -296,7 +346,7 @@ sup{
 }
 
 .project-essay-title{
-    margin-top: 40px;
+    
     text-align: right;
     font-size: 40px;
     font-family: "neue-haas-grotesk-display", sans-serif;
@@ -306,7 +356,7 @@ margin-right: 20px;
 
 }
 
-.project-essay-title::before{
+.project-essay-title::before, .mobile-link::before{
     content: '// ';
     color: #FF229C;
 }
@@ -314,6 +364,7 @@ margin-right: 20px;
 #essay > .project-info{
     text-align: right;
     margin-right: 20px;
+    font-size: 20px;
 }
 
 a, a:link, a:visited, a:hover, a:active{
@@ -364,12 +415,111 @@ button:hover {
 }
 
 
-#essay, #media{
-    padding-top: 170px;
+
+
+.home-content{
+    position: fixed;
+    padding-left: 80px;
+    padding-top: 20px;
+   /* border: 2px solid black; */
+   width: calc(100vw - 20vw);
+   left: calc(70px + 20vw);
+   top: 80px;
+   height: 100vh;
+   overflow-x: hidden;
+  
+}
+
+.video-container > video {
+    opacity: 0.5;
+   
+}
+
+.video-container{
+    height: 60vh;
+    object-fit: cover;
+    object-position: left top;
+    overflow: hidden;
+}
+
+.home-bottom{
+    position: fixed;
+    background-color: #FAFFEA;
+    height: 90vh;
+    width: 100vw;
+    z-index: 5;
+}
+.tagline {
+    position: fixed;
+    font-size: 7.3rem;
+    z-index: 10;
+    bottom: 50px;
+    color: #FF229C;
+    text-align: right;
+    padding: 40px;
+    font-family: "neue-haas-grotesk-display", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 0.95;
+    user-select: none;
+}
+
+.home-info{
+    position: relative;
+  bottom: 0;
+}
+.loading{
+    background-color: #FAFFEA;
+    width: 100vw;
+}
+
+.minimise-nav{
+    position: fixed;
+    left: 50px;
+    bottom: 50px;
+    z-index: 90;
+    font-style: oblique;
+    color: black;
+}
+.minimise-nav:hover{
+    color: #FF229C;
+    
+}
+
+.nav-minimised{
+     z-index: 30;
+    background-color: #FAFFEA;
+    ;
+   font-size: 35px ;
+   left: 30px;
+    height: 50px;
+    margin: 50px;
+    width: calc(100vh - 80px);
+    
+    position: fixed;
+   display: flex;
+   justify-content: space-between;
+   /* flex-direction: column; */
+   align-items: center;
+   padding: 10px;
+   transform:  rotate(90deg);
+   transform-origin: top left;
+   
 }
 
 
-
+.nav-minimised > h4 {
+    position: relative;
+    font-size: 40px;
+    font-weight: 700;
+    transform:  rotate(180deg);
+    animation: blurIn .5s ease;
+     /* white-space: nowrap; */
+    
+    
+     
+    
+}
 
 @keyframes rotate-half {
     0% {rotate: 0deg;}
@@ -393,6 +543,23 @@ button:hover {
     }
     
 }
+@keyframes blurInBG {
+    0%{
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
+        background: rgba(255, 34, 156, 0)
+
+
+    }
+    100%{
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 34, 156, 0.3)
+
+
+    }
+    
+}
 
 @keyframes slideIn {
     0%{
@@ -400,6 +567,54 @@ button:hover {
     }
     100%{
         left: 0vw;
+    }
+}
+@keyframes slideOut {
+    0%{
+        left: 0vw;
+    }
+    100%{
+        left: -100vw;
+    }
+}
+@keyframes archiveMenuSlideOut {
+    0%{
+        left: 0;
+    }
+    100%{
+        left: -90vw;
+    }
+}
+@keyframes archiveMenuSlideIn {
+    0%{
+        left: -90vw;
+    }
+    100%{
+        left: 0vw;
+    }
+}
+
+@keyframes minimiseNav {
+
+}
+@keyframes growContent {
+    0%{
+        width: calc(100vw - 450px);
+        left: 450px;
+    }
+    100%{
+        width: calc(100vw - 100px);
+        left: 100px;
+    }
+}
+@keyframes shrinkContent {
+    0%{
+        width: calc(100vw - 100px);
+        left: 100px;
+    }
+    100%{
+        width: calc(100vw - 450px);
+        left: 450px;
     }
 }
 
@@ -418,35 +633,117 @@ button:hover {
         padding: 10px;
     }
     .archive-results-container-mobile{
-        z-index: 1;
+        z-index: 20;
+        padding-top: 80px;
         position: fixed;
         top: 0;
         height: 100vh;
-        width: 100vw;
-        
-        padding: 10px;
+        width: 90vw;
+        padding-right: 10px;
+        background-color: #FAFFEA;
+        overflow-y: scroll;
+        animation: archiveMenuSlideIn .5s ease;
     }
 
     .sidenav{
         display: none;
     }
     
-    .archive-content, .book-content, .project-content{
-        position: fixed;
+    .archive-content, .book-content, .project-content, .about-content{
+        position: relative;
         width: 100vw;
-        height: fit-content;
-        top: 25vh;
-        overflow-x: scroll;
-        padding: 10px;
+        top: 10px;
+        padding-bottom: 200px;
+        /* overflow-y: scroll; */
+        /* padding: 10px; */
         
     }
 
-    .project-hero {
+    .project-hero, .project-hero-individual {
         width: 100%;
+        height: 500px;
         justify-content: center;
         object-fit: cover;
         object-position: left top;
     }
+
+    .close-mobile-nav{
+        
+        top: 0;
+        left: 0;
+        background-color: #FAFFEA;
+    }
+
+    .bg-blur{
+        z-index: 16;
+        top: 0;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background-color: #FF229C;
+        opacity: 0.3;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+       animation: blurInBG .5s ease;
+    }
+
+    .project-text-container{
+    display: flex;
+    flex-direction: column;
+}
+.project-header{
+    z-index: 15;
+    margin-top: 10px;
+    width: 100%;
+    bottom: 0;
+    padding-right: 10px;
+    position: fixed;
+    background-color: #FAFFEA;
+    
+}
+    .a-filter{
+        font-size: 20px;
+        padding-left: 10px;
+    }
+
+    .project-essay-title{
+        margin-top: 5px;
+    }
+    .project-title{
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    .project-info {
+        font-size: 15px;
+    }
+    #essay, #media{
+    padding-top: 70px;
+}
+
+    .mobile-artist{
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        z-index: 30;
+        position: fixed;
+        width: 90vw;
+        height: 100vh;
+        background-color: #FAFFEA;
+        padding: 20px;
+        justify-content: end;
+        animation: slideIn .5s ease;
+    }
+    .mobile-artist > .artist-name {
+        position: relative;
+    font-size: 50px;
+    text-align: right;
+    padding-right: 4vw;
+    bottom: 0px;
+}
+.mobile-artist > .artist-bio {
+    padding-top: 40px;
+    font-size: 14px;
+}
 
     
 }
@@ -471,9 +768,9 @@ button:hover {
     }
     .logo{
         z-index: 7;
-    margin-top: 10px;
-    width: 390px;
-    user-select: none;
+        margin-top: 10px;
+        width: 390px;
+        user-select: none;
 }
 
 .archive-container, .home-container, .book-container{
@@ -486,29 +783,30 @@ button:hover {
     height: 100vh;
     width: 100vw;
 }
-.archive-nav, .home-nav, .about-nav, .blog-nav{
+.archive-nav, .about-nav, .blog-nav{
     position: relative;
     /* border: 2px solid black; */
     top: 50px;
     width: 400px;
     height: 80vh;
+    margin-left: 30px;
     animation: blurIn 0.5s ease;
 
     
 }
  .archive-results-container{
    
-        z-index: 1;
-        position: relative;
-        top: 0;
-        height: fit-content;
-        width: 100%;
-        background-color: #FAFFEA;
+    z-index: 1;
+    position: relative;
+    top: 0;
+    height: fit-content;
+    width: 100%;
+    background-color: #FAFFEA;
     }
 
 .archive-filters{
-     display: flex;
-     position: relative;
+    display: flex;
+    position: relative;
     left: 20%;
     flex-direction: row;
     flex-wrap: wrap;
@@ -518,16 +816,17 @@ button:hover {
     padding-bottom: 7px;
 
 }
-.archive-content, .book-content, .project-content{
+.archive-content, .book-content, .project-content, .about-content{
      position: fixed;
      padding: 30px;
-     padding-left: 100px;
+     padding-left: 50px;
     /* border: 2px solid black; */
-    width: calc(100vw - 400px);
-    left: 400px;
+    width: calc(100vw - 450px);
+    left: 450px;
     top: 0;
     height: 100vh;
     overflow-x: scroll;
+    padding-right: 80px;
 }
 
 .mobile-archive-nav{
@@ -542,6 +841,7 @@ button:hover {
     padding: 20px;
     height: fit-content;
     margin-top: 20px;
+    margin-bottom: 20px;
    
 }
 
@@ -550,20 +850,70 @@ button:hover {
     height: 75vh;
    
 }
-
-.project-nav{
-    position: absolute;
-    bottom: 20px;
-    width: 300px;
-    text-align: right;
-    padding-left: 20px;
-    font-size: 15px;
+.project-hero-individual {
+    width: 100%;
+    height: 50vh;
+   
 }
 
-.project-nav > .artist-name{
+.project-nav, .home-nav{
+    position: absolute;
+    bottom: 20px;
+    width: 400px;
+    text-align: right;
+    padding-left: 40px;
+    font-size: 15px;
+    animation: blurIn 0.5s ease;
+    
+}
+
+.home-nav{
+    text-align: left;
+    bottom: 100px;
+     font-family: "neue-haas-grotesk-display", sans-serif;
+font-weight: 500;
+font-style: normal;
+font-size: 1.2rem;
+}
+
+.project-nav > .artist-name 
+{
     font-size: 50px;
 }
 
+.project-text-container{
+    display: flex;
+    flex-direction: row;
+}
+.project-header{
+    width: 100%;
+    top: -31px;
+    padding-bottom: 60px;
+    padding-top: 0;
+    background: linear-gradient(180deg, rgba(250,255,234,1) 80%, rgba(250,255,234,0) 100%);
+}
 
+.a-filter{
+    font-size: 16px;
+}
 
+.project-essay-title{
+    margin-top: 40px;
+}
+.project-title{
+    font-size: 70px;
+}
+
+#essay, #media{
+    padding-top: 170px;
+}
+
+.product-container{
+    display: flex;
+    flex-direction: row;
+}
+.project-details{
+    position: relative;
+    flex-direction: column;
+}
 }

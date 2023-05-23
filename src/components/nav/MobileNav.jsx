@@ -9,7 +9,7 @@ const MobileNav = ({closeMethod}) => {
               <button className='close-mobile-nav' onClick={closeMethod}>
               <X />
           </button>
-          <img className='logo-mobile' src="./src/assets/letting-space-logo.png" alt="" />
+          {/* <img className='logo-mobile' src="./src/assets/letting-space-logo.png" alt="" /> */}
           <ul className='mobile-menu-links'>
               <li className='mobile-link'> <Link to="/" onClick={closeMethod}>Home</Link> </li>
               <li  className='mobile-link'> <Link to="/about" onClick={closeMethod}>About</Link> </li>

@@ -1,7 +1,8 @@
 import {useState, useEffect, useRef} from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { Link, animateScroll } from 'react-scroll';
+import MobileArtistBio from './nav/MobileArtistBio';
+
 
 const baseURL = import.meta.env.VITE_WP_API_BASEURL;
 
@@ -11,7 +12,9 @@ const ProjectPage = () => {
     const [project, setProject] = useState(null)
     const { id } = useParams();
     const [loading, setLoading] = useState(true)
+    const [artistBioOpen, openArtistBio] = useState(false)
     const endpoint = `${baseURL}/project/${id}?_embed`
+    const screenWidth = window.innerWidth;
 
     console.log(id)
     
@@ -24,6 +27,8 @@ const ProjectPage = () => {
         })
         .catch((err) => console.log(err))
     }, [endpoint])
+
+  
 
     function getFeaturedImage(project) {
         if (project && project._embedded && project._embedded['wp:featuredmedia'] && project._embedded['wp:featuredmedia'][0].source_url) {
@@ -38,21 +43,35 @@ const ProjectPage = () => {
       };
       const scrollToMedia = () => {
         media.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      };
+    };
+    
+    const toggleArtistBio = () => {
+
+        if (artistBioOpen) {
+            let mobileArtistBio = document.getElementById('mobileArtist');
+
+            mobileArtistBio.style.animation = 'archiveMenuSlideOut .5s ease'
+            
+        }
+        setTimeout(openArtistBio(!artistBioOpen), 5000)
+          
+    }
 
     if (loading){
-        return <p></p>
+        return <div className='loading'></div>
     }
 
 
   return (
       
-      <div className='project-content'>
-         <img className='project-hero' src={getFeaturedImage(project)} />
+      <div className='project-content' id='project-content'>
+          <img className='project-hero' src={getFeaturedImage(project)} />
+          {/* <ImageCarousel /> */}
          <div className='project-header'>
             <div className='project-links'>
                 <p onClick={scrollToEssay}>essay</p>
-                <p onClick={scrollToMedia}>media</p>
+                  <p onClick={scrollToMedia}>media</p>
+                  {screenWidth < 760 && <p onClick={toggleArtistBio}>artist</p>}
             </div>
             <div className='project-details'>
             <h4 className="project-title">{project.title.rendered}</h4>
@@ -72,7 +91,7 @@ const ProjectPage = () => {
        
             
        
-
+    {/* ESSAY STARTS */}
         
        
         <div id='essay' ref={essay}>
@@ -81,15 +100,21 @@ const ProjectPage = () => {
             <p className='project-info'>{project.acf.essay_date}</p>
             {console.log(project.acf.essay_title)}
 
-            <div className='project-text-container'>
-                <p className='project-footnotes' dangerouslySetInnerHTML={{ __html: project.acf.essay_footnotes}}></p>
-            <p className='project-text' dangerouslySetInnerHTML={{ __html: project.acf.essay}}></p>
+              <div className='project-text-container'>
+                  {screenWidth < 780 && <> <p className='project-footnotes' dangerouslySetInnerHTML={{ __html: project.acf.essay_footnotes}}></p>
+            <p className='project-text' dangerouslySetInnerHTML={{ __html: project.acf.essay}}></p> </> }
+                {screenWidth > 780 && <> 
+                      <p className='project-text' dangerouslySetInnerHTML={{ __html: project.acf.essay }}></p>
+                      <p className='project-footnotes' dangerouslySetInnerHTML={{ __html: project.acf.essay_footnotes }}></p>
+                  </>}
             </div>
             
         </div>
-        <div  ref={media}>
-           Media
-        </div>
+        <div id='media' ref={media}>
+        <p className='project-essay-title'>Media</p>
+          </div>
+          
+          {artistBioOpen && <MobileArtistBio project={project} closeMethod={toggleArtistBio} />}
         {/* <div id='essay'>
             this is some media
         </div> */}

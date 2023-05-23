@@ -16,7 +16,6 @@ const YearList = () => {
         axios.get(`${endpoint}`)
             .then((res) => {
                 setAllPosts(res.data)
-                console.log(res.data);
                 
             })
             .catch((err) => {
@@ -61,10 +60,7 @@ const YearList = () => {
                     <p className='project-name' onClick={() => setYearSelected(5)}>2010</p>
                     <p className='artist-name'></p>
                 </div>
-                <div className='archive-result'>
-                    <p className='project-name' onClick={() => setYearSelected(9)}>1994-1996</p>
-                    <p className='artist-name'></p>
-                </div>
+                
             </>
         );
   

@@ -8,7 +8,6 @@ import Blog from './pages/Blog'
 import Product from './components/Product'
 import ProjectPage from './components/ProjectPage'
 import EssayPage from './components/EssayPage'
-import Link from 'react-scroll'
 
 
 

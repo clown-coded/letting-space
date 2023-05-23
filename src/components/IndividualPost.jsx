@@ -20,10 +20,10 @@ const IndividualPost = ({ post, index }) => {
     
     <div className='project-post' key={post.slug} >
      
-        <img className='project-hero' src={getFeaturedImage(post)} />
+        <img className='project-hero-individual' src={getFeaturedImage(post)} />
         <h4 className="project-title">{post.title.rendered}</h4>
         <p>{post.acf.project_description}</p>
-        <Link to={`/project/${post.id}`} className='project-link'> <ArrowRight/>    View project</Link>
+        <Link to={`/project/${post.id}`} className='project-link'> <ArrowRight/>    <p>View project</p></Link>
 
     </div>
     

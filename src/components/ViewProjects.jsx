@@ -25,7 +25,7 @@ const ViewProjects = ({ posts }) => {
     
 
   return (
-     <div className='archive-content'>
+     <div className='archive-content' id='archive-content'>
           <AllPosts />
           
             </div>

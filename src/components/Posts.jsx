@@ -11,7 +11,7 @@ const Posts = ({posts, postType}) => {
 
             if (postType == 'essays'){
                 
-                 endpoint = `/essays/${post.id}`
+                 endpoint = `/project/${post.acf.project_number}`
                 
             } 
 
@@ -30,13 +30,12 @@ const Posts = ({posts, postType}) => {
             )
         })
     
-
+    
+    
     return (
             
         <>
-            <button className='close-mobile-nav' >
-              <X />
-          </button>
+          
             
             {mappedPosts}
         </>

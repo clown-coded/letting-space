@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react'
 import axios from 'axios';
-import {useLocation } from 'react-router-dom';
-import {  Link, animateScroll } from 'react-scroll';
+import { useLocation } from 'react-router-dom';
+
 
 
 const baseURL = import.meta.env.VITE_WP_API_BASEURL;
@@ -9,7 +9,6 @@ const baseURL = import.meta.env.VITE_WP_API_BASEURL;
 
 
 const ProjectNav = () => {
-    const myRef = useRef(null);
     const location = useLocation().pathname
     const [project, setProject] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -42,8 +41,8 @@ const ProjectNav = () => {
     
 
    
-    if (loading){
-        return <p>Loading</p>
+     if (loading){
+        return <div className='loading'></div>
     }
 
 

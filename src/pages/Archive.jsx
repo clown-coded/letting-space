@@ -1,27 +1,31 @@
 import {useState, useEffect}from 'react'
-import ArchiveNav from '../components/nav/ArchiveNav'
-import YearList from '../components/YearList'
-import ProjectList from '../components/ProjectList'
 import axios from 'axios'
 import ViewProjects from '../components/ViewProjects'
+import MobileArchive from '../components/nav/MobileArchive'
+import ArchiveByYear from '../components/ArchiveByYear';
+
 
 const baseURL = import.meta.env.VITE_WP_API_BASEURL;
 
 const Archive = () => {
+  const [menuOpen, toggleMenu] = useState(false)
     const [essayOpen, setEssayOpen] = useState(false)
     const [mediaOpen, setMediaOpen] = useState(false)
     const [yearOpen, setYearOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [allPostsOpen, toggleAllPosts] = useState(false)
-    const [artistOpen, setArtistOpen] = useState(false)
+  const [artistOpen, setArtistOpen] = useState(false)
+  const [postType, setPostType] = useState('all')
     const [posts, setPosts] = useState([])
-    const [mobileNavIsOpen, setMobileNavOpen] = useState(false)
+  const [mobileNavIsOpen, setMobileNavOpen] = useState(false)
+  const screenWidth = window.innerWidth;
+  
 
 
 
     const endpointProjects = `${baseURL}/project?_embed`
     const endpointEssays = `${baseURL}/essays?_embed`
-    const endpointMedia = `${baseURL}/media?_embed`
+    const endpointMedia = `${baseURL}/media_posts?_embed`
 
      useEffect(() => {
        loadAllPosts()
@@ -30,10 +34,23 @@ const Archive = () => {
          toggleAllPosts(true)
       
        
-    }, [])
+     }, [])
+  
+    useEffect(() => {
+          if (postType == 'all') {
+              loadAllPosts()
+          }
+          if (postType == 'essays') {
+              loadEssayPosts()
+          }
+          if (postType == 'media') {
+              loadMediaPosts()
+          }
+      }, [postType])
 
     //need to axios essays, all posts and media
-    const loadAllPosts = () => {
+  const loadAllPosts = () => {
+  
        axios.get(`${endpointProjects}`)
             .then((res) => {
                 setPosts(res.data)
@@ -71,50 +88,72 @@ const Archive = () => {
             .catch((err) => {
             console.error(err)
             })
-        console.log('working') 
+        
+  }
+
+
+  const toggleMenuOpen = () => {
+    if (menuOpen) {
+      document.body.classList.toggle('no-scroll');
+       const sidenav = document.getElementById('archiveResultsMobile')
+      sidenav.style.animation = 'archiveMenuSlideOut .5s ease'
+      
+      
     }
+   
+    toggleMenu(!menuOpen)
+  }
+  
+  
 
   
 
     
     return (
       <>
+        {/* Archive filters */}
       <div className='mobile-archive-nav'>
         <div className='mobile-filters'>
             
-                    <p className='a-filter' onClick={() => {
-                        loadEssayPosts()
-                        setEssayOpen(true)
-                        setMediaOpen(false)
-                        setYearOpen(false)
-                        setArtistOpen(false)
+            <p className='a-filter' onClick={() => {
+              setPostType('year')
+              toggleMenuOpen()
+            }}>year</p>
+             <p className='a-filter' onClick={() => {
+              setPostType('artist')
+              toggleMenuOpen()
+            }}>artist a-z</p>
+            <p className='a-filter' onClick={() => {
+              setPostType('essays')
+              toggleMenuOpen()
             }} >essays</p>
+            <p className='a-filter' onClick={() => {
+              setPostType('media')
+             toggleMenuOpen()}} >media</p>
+            
+           
+            
                <p className='a-filter' onClick={() => {
-                        loadMediaPosts()
-                        setEssayOpen(false)
-                        setMediaOpen(true)
-                        setYearOpen(false)
-                        setArtistOpen(false)
-            }} >media</p>
-               <p className='a-filter' >year</p>
-               <p className='a-filter' >artist a-z</p>
-               <p className='a-filter' >view all</p>
+              setPostType('all')
+            toggleMenuOpen()}}>view all</p>
                
           </div>
           
         </div>
+        {/* archive filters */}
      
-            {(allPostsOpen && !loading) && <ViewProjects posts={posts}/>}
-
+        {/* Posts menu */}
+        {(screenWidth <= 780 && !loading && menuOpen) && 
+          
+          
+         <MobileArchive postType={postType}  posts={posts} closeMethod={toggleMenuOpen} />
            
-            {yearOpen && <YearList />}
-            {essayOpen && <ProjectList project={posts } />}
-            {mediaOpen && <ProjectList project={posts } />}
-            {/* needs artist open */}
-            
+        }
+        
 
-            {/* {!loading} */}
-            
+        {(allPostsOpen && !loading) && <ViewProjects posts={posts} />}
+        {/* <ArchiveByYear/> */}
+
             
       </>
         
