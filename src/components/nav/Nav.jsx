@@ -165,7 +165,7 @@ const Nav = () => {
                   }}/>
                   <div className='logo-container'>
                       <Link to='/'>
-                          <img className='logo' src="../../../public/assets/letting-space-logo.png" alt="Letting Space Logo" onClick={() => { setCurrentPage('home') }} /> </Link>
+                          <img className='logo' src="../../../public/assets/letting-space-logo.jpg" alt="Letting Space Logo" onClick={() => { setCurrentPage('home') }} /> </Link>
                       
                       <ChevronDown onClick={toggleMenu}
                             id= 'open-menu' className= {menuIsOpen ? 'rotate' : 'unrotate' } 
