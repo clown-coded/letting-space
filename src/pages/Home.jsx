@@ -1,5 +1,5 @@
 import React from 'react'
-import video from '../assets/art_installation__market_testament_(long) (240p).mp4'
+import video from '../../public/assets/art_installation__market_testament_(long) (240p).mp4'
 
 const Home = () => {
   return (
