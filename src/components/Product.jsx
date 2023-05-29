@@ -56,6 +56,7 @@ const Product = (props) => {
                   
                   <img className='product-image' src={getFeaturedImage(product)} alt='Product Image' />
               </div>
+              
               <div id='product-description' dangerouslySetInnerHTML={{ __html: product.description }} />
               
               <div id='tools'>

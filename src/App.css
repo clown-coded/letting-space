@@ -171,8 +171,8 @@ right: 30px;
     width: fit-content;
     /* font-size: 20px; */
      font-family: "neue-haas-grotesk-display", sans-serif;
-font-weight: 600;
-font-style: normal;
+/* font-weight: 400; */
+/* font-style: normal; */
 
 padding-right: 20px;
 padding-bottom: 10px;
@@ -451,7 +451,7 @@ button:hover {
     position: fixed;
     font-size: 7.3rem;
     z-index: 10;
-    bottom: 50px;
+    bottom: 1%;
     color: #FF229C;
     text-align: right;
     padding: 40px;
@@ -510,6 +510,7 @@ button:hover {
     position: relative;
     font-size: 40px;
     font-weight: 700;
+    
     transform:  rotate(180deg);
     animation: blurIn .5s ease;
      /* white-space: nowrap; */
@@ -784,7 +785,7 @@ button:hover {
 .archive-nav, .about-nav, .blog-nav{
     position: relative;
     /* border: 2px solid black; */
-    top: 50px;
+    top: 40px;
     width: 400px;
     height: 80vh;
     margin-left: 30px;
@@ -805,12 +806,12 @@ button:hover {
 .archive-filters{
     display: flex;
     position: relative;
-    left: 20%;
+    padding-left: 20%;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: right;
     border-bottom: 1px solid black;
-    width: 80%;
+    width: 100%;
     padding-bottom: 7px;
 
 }
@@ -892,7 +893,7 @@ font-size: 1.2rem;
 }
 
 .a-filter{
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .project-essay-title{
